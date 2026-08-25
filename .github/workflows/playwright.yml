@@ -55,9 +55,6 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps "${{ matrix.browser }}"
 
-      - name: Build frontend
-        run: npm run build
-
       - name: Wait for Supabase to be ready
         run: |
           timeout=600

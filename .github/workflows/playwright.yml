@@ -27,11 +27,11 @@ jobs:
 
       - uses: useblacksmith/stickydisk@v1
         with:
-          key: supabase-pgdata-${{ runner.os }}-shard$-{{ matrix.shard }}
+          key: supabase-pgdata-${{ runner.os }}-shard$-${{ matrix.browser }}
           path: ~/.supabase/data
 
       - name: Start Supabase local development setup
-        run: supabase start --exclude edge-runtime,imgproxy,logflare,postgres-meta,realtime,storage-api,supavisor,vector &
+        run: supabase start --exclude edge-runtime,imgproxy,logflare,postgres-meta,realtime,storage-api,supavisor,vector
 
       - uses: useblacksmith/setup-node@v5
         with:
@@ -83,6 +83,6 @@ jobs:
           path: test-results
           retention-days: 30
 
-#      - name: Stop Supabase local development setup
-#        if: always()
-#        run: supabase stop --no-backup
+      - name: Stop Supabase local development setup
+        if: always()
+        run: supabase stop

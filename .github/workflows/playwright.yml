@@ -31,7 +31,7 @@ jobs:
           path: ~/.supabase/data
 
       - name: Start Supabase local development setup
-        run: supabase start --exclude edge-runtime,imgproxy,logflare,postgres-meta,realtime,storage-api,supavisor,vector
+        run: supabase start --exclude edge-runtime,imgproxy,logflare,postgres-meta,realtime,storage-api,supavisor,vector &
 
       - uses: useblacksmith/setup-node@v5
         with:

@@ -1,0 +1,11 @@
+name: WarpBuild Probe
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  probe:
+    runs-on: warp-ubuntu-latest-x64-2x
+    timeout-minutes: 5
+    steps:
+      - run: echo "picked up by $(hostname)"; nproc; free -g
